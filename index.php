@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Breathe</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
+	<link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="./assets/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+	<!-- <link rel="manifest" href="/manifest.json"> -->
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
@@ -28,13 +28,23 @@
 		:root {
 			--length: 130px;
 		}
-		.app.light {
+		.light {
 			--dark-color: #111;
 			--light-color: #fff;
+			--dark-gray: #666;
+			--light-gray: #eee;
+
+			--slider-bg: #eee;
+			--slider-handle: #111;
 		}
-		.app.dark {
+		.dark {
 			--dark-color: #fff;
 			--light-color: #111;
+			--dark-gray: #ddd;
+			--light-gray: #222;
+
+			--slider-bg: #aaa;
+			--slider-handle: #333;
 		}
 		* {
 			margin: 0;
@@ -56,6 +66,7 @@
 			height: 100%;
 			width: 100%;
 			padding: 50px;
+			transition: background-color 0.4s ease-in-out;
 		}
 		.logo {
 			width: 110px;
@@ -102,10 +113,11 @@
 		}
 		.start-btn {
 			font-family: 'Rubik', sans-serif;
-			font-size: 18px;
+			font-size: 16px;
+			font-weight: bold;
 			color: var(--light-color);
 			background-color: var(--dark-color);
-			padding: 10px 85px;
+			padding: 12px 85px;
 			border-radius: 5px;
 			border: 2px solid var(--dark-color);
 			cursor: pointer;
@@ -149,20 +161,109 @@
   				border-radius: 50%;
   			}
 		}*/
+
+		.settings {
+			width: 200px;
+		}
+		.settings .setting {
+		    display: flex;
+		    justify-content: space-between;
+		    margin-bottom: 15px;
+		}
+
+		.settings .setting .setting-title {
+		    color: var(--dark-color);
+		    font-weight: 600;
+		    transition: color 0.4s ease-in-out;
+		}
+
+		.switch {
+		  position: relative;
+		  display: inline-block;
+		  width: 45px;
+		  height: 15px;
+		}
+
+		.switch input { 
+		  opacity: 0;
+		  width: 0;
+		  height: 0;
+		}
+
+		.switch input:focus { outline: none; }
+
+		.slider {
+		  position: absolute;
+		  cursor: pointer;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background-color: var(--slider-bg);
+		  -webkit-transition: .4s;
+		  transition: .4s;
+		}
+
+		.slider:before {
+		  position: absolute;
+		  content: "";
+		  height: 20px;
+		  width: 20px;
+		  left: 0px;
+		  bottom: -3px;
+		  background-color: var(--slider-handle);
+		  -webkit-transition: .3s;
+		  transition: .3s;
+		}
+
+		input:checked + .slider {
+		  background-color: var(--slider-bg);
+		}
+
+		input:focus + .slider {
+		  box-shadow: 0 0 1px var(--slider-handle);
+		}
+
+		input:checked + .slider:before {
+		  -webkit-transform: translateX(25px);
+		  -ms-transform: translateX(25px);
+		  transform: translateX(25px);
+		}
+
+		/* Rounded sliders */
+		.slider.round {
+		  border-radius: 34px;
+		}
+
+		.slider.round:before {
+		  border-radius: 50%;
+		}
 	</style>
 </head>
-<body>
-	<div class="app dark">
+<body class="light">
+	<div class="app">
 		<div>
-			<!-- <img class="logo" src="./assets/logo.png"> -->
-			<img class="logo" src="./assets/logo_white.png">
+			<img class="logo" src="./assets/logo.png">
 		</div>
-		<div class="settings">
-			<p>theme</p>
+		<div class="controls">
+			<div class="length-picker">
+				
+			</div>
+			<div class="settings">
+				<div class="setting">
+	                <span class="setting-title noselect">theme</span>
+	                <label class="switch">
+	                  <input type="checkbox" class="themeCheck">
+	                  <span class="slider round"></span>
+	                </label>
+	            </div>
+			</div>
 		</div>
 		<div>
 			<btn class="start-btn">start</btn>
 		</div>
 	</div>
+
+	<script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>

@@ -66,7 +66,7 @@
 			justify-content: center;
 			align-items: center;*/
 			transform: scale(1);
-			animation: breathing 6s infinite alternate;
+			animation: breathing 16s infinite alternate;
 			box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 
 		}
@@ -162,15 +162,26 @@
 				transform: scale(0.4); 
 				border-radius: 50%;
 			}
-			50%  { 
+			20%   { 
 				transform: scale(1);
 				border-radius: 5px;
 			}
-			100%  { 
-				transform: scale(0.4);
+			40%   { 
+				transform: scale(1);
+				border-radius: 5px;
+			}
+			60%   { 
+				transform: scale(1);
+				border-radius: 5px;
+			}
+			80%   { 
+				transform: scale(0.4); 
 				border-radius: 50%;
 			}
-
+			100%  { 
+				transform: scale(0.4); 
+				border-radius: 50%;
+			}
 		}
 
 		/*@keyframes breathing {

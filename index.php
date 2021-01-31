@@ -28,11 +28,11 @@
 		:root {
 			--length: 130px;
 		}
-		.container.light {
+		.app.light {
 			--dark-color: #111;
 			--light-color: #fff;
 		}
-		.container.dark {
+		.app.dark {
 			--dark-color: #fff;
 			--light-color: #111;
 		}
@@ -41,15 +41,20 @@
 			padding: 0;
 			box-sizing: border-box;
 			user-select: none;
+			font-family: 'Rubik', sans-serif;
 		}
-		.container {
+		body, html {
+			height: 100%
+		}
+		.app {
 			background-color: var(--light-color);
 			text-align: center;
 			display: flex;
 			justify-content: space-between;
 			flex-direction: column;
 			align-items: center;
-			height: 100vh;
+			height: 100%;
+			width: 100%;
 			padding: 50px;
 		}
 		.logo {
@@ -147,12 +152,13 @@
 	</style>
 </head>
 <body>
-	<div class="container light">
+	<div class="app dark">
 		<div>
-			<img class="logo" src="./assets/logo.png">
+			<!-- <img class="logo" src="./assets/logo.png"> -->
+			<img class="logo" src="./assets/logo_white.png">
 		</div>
 		<div class="settings">
-			
+			<p>theme</p>
 		</div>
 		<div>
 			<btn class="start-btn">start</btn>

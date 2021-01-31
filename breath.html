@@ -12,10 +12,14 @@
 		.container.light {
 			--dark-color: #111;
 			--light-color: #fff;
+			--dark-gray: #666;
+			--light-gray: #eee;
 		}
 		.container.dark {
 			--dark-color: #fff;
 			--light-color: #111;
+			--dark-gray: #ddd;
+			--light-gray: #222;
 		}
 		* {
 			margin: 0;
@@ -105,10 +109,9 @@
 		    pointer-events: initial;
 		    cursor: pointer;
 		}
-
 		.lung {
 			cursor: pointer;
-			width: 30px;
+			width: 32px;
 		}
 
 		.instructions-top {
@@ -123,13 +126,35 @@
 			border-radius: 50px;
 			width: 250px;
 			height: 6px;
-			background-color: #ddd;
+			background-color: var(--light-gray);
 		}
 		.bar-inner {
 			border-radius: 50px;
-			width: 50px;
+			width: 0px;
 			height: 6px;
 			background-color: var(--dark-color);
+			animation-name: progress;
+			animation-duration: 30s;
+			animation-fill-mode: forwards;
+			animation-timing-function: linear;
+		}
+		.time-left {
+			color: var(--dark-gray);
+			font-size: 13px;
+			margin-bottom: 3px;
+			position: relative;
+			right: -104px;
+			font-weight: bold;
+		}
+
+		@keyframes progress {
+			0%   { 
+				width: 0px;
+			}
+			100%  { 
+				width: 250px;
+			}
+
 		}
 
 		@keyframes breathing {
@@ -169,9 +194,10 @@
 	</style>
 </head>
 <body>
-	<div class="container light">
+	<div class="container dark">
 		<div class="top-controls">
-			<img class="lung" src="./assets/lungs.png">
+			<!-- <img class="lung" src="./assets/lungs.svg"> -->
+			<img class="lung" src="./assets/lungs_white.svg">
 			<svg class="cross" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" xml:space="preserve">
                 <g>
                     <path class="st0" d="M6.3,2L48,43.7c1.4,1.2,1.4,3.1,0,4.2c-1.2,1.4-3.1,1.4-4.2,0L2,6.3C0.7,5.1,0.7,3.2,2,2
@@ -193,10 +219,15 @@
 		</div>
 		<div class="bottom">
 			<!-- <btn class="bottom">exit</btn> -->
+			<p class="time-left">00:52</p>
 			<div class="bar-outter">
 				<div class="bar-inner"></div>
 			</div>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>

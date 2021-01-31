@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<style type="text/css">
 		:root {
 			--length: 130px;
@@ -27,10 +30,10 @@
 			flex-direction: column;
 			align-items: center;
 			height: 100vh;
-			padding: 30px;
+			padding: 50px;
 		}
 		.logo {
-			width: 100px;
+			width: 110px;
 		}
 		.box-outline {
 			width: var(--length);
@@ -47,8 +50,8 @@
 		}
 
 		.box {
-			width: calc(var(--length) - 10px);
-			height: calc(var(--length) - 10px);
+			width: calc(var(--length) - 15px);
+			height: calc(var(--length) - 15px);
 			position: absolute;
 			/*top: 50%;
 			left: 50%;
@@ -59,15 +62,12 @@
 			justify-content: center;
 			align-items: center;*/
 			transform: scale(1);
-			animation: breathing 14s infinite;
+			animation: breathing 6s infinite alternate;
 			box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 
 		}
 		.timer {
 			position: absolute;
-			/*top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);*/
 			color: var(--light-color);
 			font-size: 22px;
 			font-family: 'Rubik';
@@ -77,6 +77,59 @@
 			font-size: 20px;
 			color: var(--dark-color);
 			text-decoration: none;
+			cursor: pointer;
+		}
+		.bottom:after {
+		    content: '';
+		    margin: auto;
+		    width: 0;
+		    display: block;
+		    height: 2px;
+		    background-color: var(--dark-color);
+		    transition: all 0.7s;
+		}
+		.bottom:hover:after {
+		    width: 100%;
+		}
+
+		.top-controls {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			max-width: 300px;
+		}
+		.top-controls svg {
+		    height: 25px;
+		    fill: var(--dark-color);
+		    stroke: var(--dark-color);
+		    pointer-events: initial;
+		    cursor: pointer;
+		}
+
+		.lung {
+			cursor: pointer;
+			width: 30px;
+		}
+
+		.instructions-top {
+			color: var(--dark-color);
+			font-family: 'Rubik', sans-serif;
+			font-weight: bold;
+			font-size: 17px;
+			margin-bottom: 14px;
+		}
+
+		.bar-outter {
+			border-radius: 50px;
+			width: 250px;
+			height: 6px;
+			background-color: #ddd;
+		}
+		.bar-inner {
+			border-radius: 50px;
+			width: 50px;
+			height: 6px;
+			background-color: var(--dark-color);
 		}
 
 		@keyframes breathing {
@@ -88,10 +141,11 @@
 				transform: scale(1);
 				border-radius: 5px;
 			}
-  			100% { 
-  				transform: scale(0.4);
-  				border-radius: 50%;
-  			}
+			100%  { 
+				transform: scale(0.4);
+				border-radius: 50%;
+			}
+
 		}
 
 		/*@keyframes breathing {
@@ -116,16 +170,32 @@
 </head>
 <body>
 	<div class="container light">
-		<div>
-			<img class="logo" src="./logo.png">
+		<div class="top-controls">
+			<img class="lung" src="./assets/lungs.png">
+			<svg class="cross" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 50 50" xml:space="preserve">
+                <g>
+                    <path class="st0" d="M6.3,2L48,43.7c1.4,1.2,1.4,3.1,0,4.2c-1.2,1.4-3.1,1.4-4.2,0L2,6.3C0.7,5.1,0.7,3.2,2,2
+                        C3.2,0.7,5.1,0.7,6.3,2L6.3,2z"></path>
+                    <path class="st0" d="M43.7,2L2,43.7c-1.4,1.2-1.4,3.1,0,4.2c1.2,1.4,3.1,1.4,4.2,0L48,6.3c1.4-1.2,1.4-3.1,0-4.2
+                        C46.8,0.7,44.9,0.7,43.7,2L43.7,2z"></path>
+                </g>
+            </svg>
+			<!-- <img class="logo" src="./assets/logo_white.png"> -->
 		</div>
-		<div class="box-outline">
-			<div class="box">
+		<div>
+			<p class="instructions-top">breathe in</p>
+			<!-- <p class="instructions-top">breathe in</p> -->
+			<div class="box-outline">
+				<div class="box">
+				</div>
+				<p class="timer">10</p>
 			</div>
-			<p class="timer">10</p>
 		</div>
-		<div>
-			<a href="" class="bottom">exit</a>
+		<div class="bottom">
+			<!-- <btn class="bottom">exit</btn> -->
+			<div class="bar-outter">
+				<div class="bar-inner"></div>
+			</div>
 		</div>
 	</div>
 </body>

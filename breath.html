@@ -22,17 +22,19 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="	stylesheet">
 	<style type="text/css">
 		:root {
 			--length: 130px;
 		}
-		.container.light {
+		.app.light {
 			--dark-color: #111;
 			--light-color: #fff;
 			--dark-gray: #666;
 			--light-gray: #eee;
 		}
-		.container.dark {
+		.app.dark {
 			--dark-color: #fff;
 			--light-color: #111;
 			--dark-gray: #ddd;
@@ -43,14 +45,17 @@
 			padding: 0;
 			box-sizing: border-box;
 		}
-		.container {
+		body, html {
+			height: 100%;
+		}
+		.app {
 			background-color: var(--light-color);
-			text-align: center;
 			display: flex;
+			text-align: center;
 			justify-content: space-between;
 			flex-direction: column;
 			align-items: center;
-			height: 100vh;
+			height: 100%;
 			padding: 50px;
 		}
 		.logo {
@@ -97,10 +102,8 @@
 			font-family: 'Rubik', sans-serif;
 			font-size: 20px;
 			color: var(--dark-color);
-			text-decoration: none;
-			cursor: pointer;
 		}
-		.bottom:after {
+		/*.bottom:after {
 		    content: '';
 		    margin: auto;
 		    width: 0;
@@ -111,12 +114,13 @@
 		}
 		.bottom:hover:after {
 		    width: 100%;
-		}
+		}*/
 
 		.top-controls {
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 			max-width: 300px;
 		}
 		.top-controls svg {
@@ -162,6 +166,7 @@
 			position: relative;
 			right: -104px;
 			font-weight: bold;
+			display: inline-block;
 		}
 
 		@keyframes progress {
@@ -222,7 +227,7 @@
 	</style>
 </head>
 <body>
-	<div class="container dark">
+	<div class="app dark">
 		<div class="top-controls">
 			<!-- <img class="lung" src="./assets/lungs.svg"> -->
 			<img class="lung" src="./assets/lungs_white.svg">

@@ -29,6 +29,32 @@ const app = () => {
             logo.src = "./assets/logo.png";
         }
     });
+
+    // Pick cycle length
+    const cycle_lengths = document.querySelectorAll('.length-buttons button');
+    cycle_lengths.forEach(length_btn =>{
+        length_btn.addEventListener('click', function(){
+            activateButtons(length_btn);
+        }); 
+    });
+
+    function activateButtons (cur_length) {
+        // Pick length
+        cycle_lengths.forEach(length_btn =>{
+            if(length_btn.classList.contains("active")) {
+                length_btn.classList.remove('active');
+            }
+            cur_length.classList.add('active');
+        });
+    }
+
+
+    // function openModal () {
+    // }
+
+    // function closeModal () {
+    // }
+
 };
 
 

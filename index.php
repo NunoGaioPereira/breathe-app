@@ -213,6 +213,7 @@
 			cursor: pointer;
 			transition: all 0.3s ease-in-out;
 			font-weight: bold;
+			outline: none;
 		}
 		.length-picker button:hover {
 			background-color: var(--dark-color);
@@ -510,9 +511,9 @@
 		<div class="controls">
 			<div class="length-picker">
 				<div class="length-buttons">
-					<button class="active">4</button>
-					<button>5</button>
-					<button>6</button>
+					<button class="active" data-length="4">4</button>
+					<button data-length="5">5</button>
+					<button data-length="6">6</button>
 				</div>
 				<p>breath pace</p>
 			</div>
